@@ -1,13 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply font-inconsolata;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer utilities {
+  .bg-multi-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/public/assets/images/pattern-lines.svg"),
+      url("/public/assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg"),
+      url("/public/assets/images/pattern-squiggly-line-top.svg");
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: top left, bottom left, top 20px right;
+    background-size: auto, 200px, 100px;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 0;
+  }
 }
