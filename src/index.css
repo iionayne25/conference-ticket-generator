@@ -22,4 +22,15 @@ body {
     pointer-events: none;
     z-index: 0;
   }
+
+  .input-box {
+    @apply bg-neutral-500/20 border text-neutral border-neutral-500 rounded-xl h-12 placeholder-neutral-300 px-2 focus:outline  focus:outline-neutral-500 focus:outline-offset-2 
+    hover:cursor-pointer hover:bg-neutral-300/30;
+  }
+
+  .error-text{
+    @apply text-orange-700 text-xs flex gap-1
+  }
 }
+
+

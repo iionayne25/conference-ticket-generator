@@ -1,38 +1,59 @@
-import { useRef, useState } from "react";
+import { DragEventHandler, useRef, useState } from "react";
 import { MAX_SIZE_BYTES } from "../constant/img";
-export default function UploadImgSection() {
-  const inputRef = useRef(null);
-  const [preview, setPreview] = useState(null);
-  const [error, setError] = useState(null);
+import { IMG_UPLOAD_ERROR_MSG } from "../constant/error";
+type Props = {
+  image: File | null;
+  setImage: (file: File) => void;
+  requiredError?: string;
+  clearError?: () => void;
+};
+export default function UploadImgSection({
+  image,
+  setImage,
+  requiredError,
+  clearError
+}: Props) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleFileChange = (e) => {
-    console.log("e", e);
-
-    const file = e.target.files?.[0];
+  const handleFileChange = (e: any) => {
+    const file = e.target?.files?.[0];
 
     if (file?.size > MAX_SIZE_BYTES) {
-      setError("File too large. Please upload a photo under 500KB.");
+      setError(IMG_UPLOAD_ERROR_MSG);
       return;
     }
     const imageUrl = URL.createObjectURL(file);
     setPreview(imageUrl);
+    if (file) {
+      setImage(file);
+      setError(null)
+    }
+    if (clearError) clearError();
   };
 
-  const handleDrop = (e) => {
+  const handleDrop = (e: any) => {
     e.preventDefault();
+    setError(null);
     const file = e.dataTransfer.files?.[0];
-    
- 
+
     if (file?.size > MAX_SIZE_BYTES) {
-      setError("File too large. Please upload a photo under 500KB.");
+      setError(IMG_UPLOAD_ERROR_MSG);
       return;
     }
     const imageUrl = URL.createObjectURL(file);
-    setPreview(imageUrl);
+    if (file) {
+      setPreview(imageUrl);
+      setError(null);
+    }
+    if (clearError) clearError();
   };
 
-  const handleRemoveImage = (e) => {
+  const handleRemoveImage = (e: any) => {
     setPreview(null);
+    setError(requiredError ?? null)
+    if (clearError) clearError();
   };
 
   return (
@@ -42,11 +63,14 @@ export default function UploadImgSection() {
       onDragOver={(e) => e.preventDefault()}
     >
       <h6 className="text-lg text-neutral">Upload Avatar</h6>
-      <div className="w-full flex flex-col gap-3 justify-center items-center border border-neutral-500 border-dashed rounded-xl bg-neutral/10 text-neutral-300 py-7">
+      <div
+        tabIndex={0}
+        className="w-full flex flex-col gap-3 justify-center items-center border border-neutral-500 border-dashed rounded-xl bg-neutral/10 
+      text-neutral-300 py-7  focus:outline focus:outline-neutral-500 focus:outline-offset-2 "
+      >
         <input
           type="file"
           accept=".png, .jpg"
-          max
           className="hidden"
           id="file-upload"
           ref={inputRef}
@@ -79,7 +103,7 @@ export default function UploadImgSection() {
           <>
             <label
               htmlFor="file-upload"
-              className="flex bg-neutral/20 rounded-xl p-2 cursor-pointer"
+              className="flex bg-neutral/20 rounded-xl p-2 cursor-pointer "
             >
               <img
                 src="/assets/images/icon-upload.svg"
@@ -93,11 +117,15 @@ export default function UploadImgSection() {
       </div>
       <div className="flex gap-2">
         <img
-          src="/assets/images/icon-info.svg"
-          className={`${error ? "text-orange-700" : "text-neutral"}`}
+          src={
+            error
+              ? "assets/images/icon-info-orange.svg"
+              : "assets/images/icon-info.svg"
+          }
           alt="info-icon"
           width={15}
         />
+
         {error ? (
           <p className="text-[11px] text-orange-700">{error}</p>
         ) : (
@@ -106,6 +134,17 @@ export default function UploadImgSection() {
           </p>
         )}
       </div>
+
+      {requiredError && (
+        <div className="error-text">
+          <img
+            src="assets/images/icon-info-orange.svg"
+            alt="info icon"
+            width={15}
+          />
+          {requiredError}
+        </div>
+      )}
     </div>
   );
 }

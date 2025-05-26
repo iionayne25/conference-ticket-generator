@@ -18,6 +18,7 @@ module.exports = {
         "mobile-bg": "url('../public/assets/images/background-mobile.png')",
         "tablet-bg": "url('../public/assets/images/background-tablet.png')",
         "desktop-bg": "url('../public/assets/images/background-desktop.png')",
+        ticket: "url('../public/assets/images/pattern-ticket.svg')",
       },
     },
   },
