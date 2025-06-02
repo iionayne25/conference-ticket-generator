@@ -5,19 +5,18 @@ export const TITLE_FORM = {
 
 export const TITLE_TICKET = {
   TITLE: (RegistedName: string) => (
-    <span>
-      Congrats,{" "}
-      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F37362] to-neutral-500">
-        {RegistedName}
-      </span>{" "}
-      your ticket is ready.
-    </span>
+    <h1 className="font-bold text-2xl break-words px-5 md:text-3xl md:px-32 xl:text-4xl">
+      <span className="text-neutral">Congrats, </span>
+      <span className="text-orange-500">{RegistedName}!</span>{" "}
+      <span>Your Ticket is Ready.</span>
+    </h1>
   ),
   DESC: (email: string) => (
     <span>
-      We've emailed your ticket to{" "}
-      <span className="text-orange-500">{email}</span> and will send updates
-      leading up to the event.
+      We've emailed your ticket to
+      <br />
+      <span className="text-orange-500">{email}</span> and will send updates in
+      the run up to the event.
     </span>
   ),
 };

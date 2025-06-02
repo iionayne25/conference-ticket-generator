@@ -45,7 +45,7 @@ export default function Form({
                 <UploadImgSection
                   image={image}
                   setImage={(file) => {
-                    setImage(file)
+                    setImage(file);
                     field.onChange(file);
                     clearErrors("image");
                   }}
@@ -127,7 +127,7 @@ export default function Form({
           </div>
           <button
             type="submit"
-            className="bg-orange-500 text-neutral-900 text-lg font-extrabold h-12 rounded-lg cursor-pointer
+            className=" bg-orange-500 text-neutral-900 text-lg font-extrabold h-12 rounded-lg cursor-pointer
             hover:bg-orange-700 hover:shadow-md active:outline active:outline-neutral-300 active:outline-offset-2 "
           >
             Generate My Ticket

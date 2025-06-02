@@ -111,7 +111,7 @@ export default function UploadImgSection({
                 width={30}
               />
             </label>
-            <p className="text-neutral-500">Drag and drop or click to upload</p>
+            <p className="text-neutral-500 xl:text-xs">Drag and drop or click to upload</p>
           </>
         )}
       </div>

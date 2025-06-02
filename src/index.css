@@ -12,6 +12,7 @@ body {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
     background-image: url("/public/assets/images/pattern-lines.svg"),
       url("/public/assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg"),
       url("/public/assets/images/pattern-squiggly-line-top.svg");
@@ -20,8 +21,22 @@ body {
     background-size: auto, 200px, 100px;
     opacity: 1;
     pointer-events: none;
-    z-index: 0;
+
   }
+  @media screen and (min-width: 768px) {
+    .bg-multi-overlay::before {
+      background-size: auto, 300px, 250px; 
+    }
+  }
+  @media screen and (min-width: 1040px) {
+    .bg-multi-overlay::before {
+      background-image: url("/public/assets/images/pattern-lines.svg"),
+      url("/public/assets/images/pattern-squiggly-line-bottom-desktop.svg"),
+      url("/public/assets/images/pattern-squiggly-line-top.svg");
+      background-size: auto, 400px, 300px; 
+    }
+  }
+ 
 
   .input-box {
     @apply bg-neutral-500/20 border text-neutral border-neutral-500 rounded-xl h-12 placeholder-neutral-300 px-2 focus:outline  focus:outline-neutral-500 focus:outline-offset-2 
@@ -33,4 +48,7 @@ body {
   }
 }
 
-
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}

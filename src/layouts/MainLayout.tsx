@@ -32,11 +32,11 @@ export default function MainLayout() {
   };
 
   return (
-    <div className="relative  h-screen bg-mobile-bg bg-cover bg-center bg-no-repeat bg-multi-overlay">
-      <div className="flex flex-col gap-6 justify-center items-center px-5 z-[1] overflow-y-auto py-5">
+    <div className="relative h-screen bg-mobile-bg md:bg-tablet-bg xl:bg-desktop-bg bg-cover bg-center bg-no-repeat bg-multi-overlay">
+      <div className="relative flex flex-col h-full gap-6 justify-start items-center px-5 z-1 overflow-y-auto py-5 xl:px-40">
         <Header />
         <Title title={titleContent?.title} desc={titleContent?.desc} />
-        <div className="pt-1 w-full " >
+        <div className="pt-1 w-full md:px-40 xl:px-[350px]">
           {submitted ? (
             <Ticket formData={formData ?? null} />
           ) : (
