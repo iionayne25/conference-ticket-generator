@@ -53,6 +53,11 @@ export default function UploadImgSection({
   const handleRemoveImage = (e: any) => {
     setPreview(null);
     setError(requiredError ?? null)
+
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
+
     if (clearError) clearError();
   };
 

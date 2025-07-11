@@ -36,7 +36,7 @@ export default function MainLayout() {
       <div className="relative flex flex-col h-full gap-6 justify-start items-center px-5 z-1 overflow-y-auto py-5 xl:px-40">
         <Header />
         <Title title={titleContent?.title} desc={titleContent?.desc} />
-        <div className="pt-1 w-full md:px-40 xl:px-[350px]">
+        <div className="pt-1 w-full md:px-40 xl:px-[380px] 2xl:px-[550px]">
           {submitted ? (
             <Ticket formData={formData ?? null} />
           ) : (

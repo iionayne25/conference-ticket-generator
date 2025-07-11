@@ -33,11 +33,10 @@ body {
       background-image: url("/public/assets/images/pattern-lines.svg"),
       url("/public/assets/images/pattern-squiggly-line-bottom-desktop.svg"),
       url("/public/assets/images/pattern-squiggly-line-top.svg");
-      background-size: auto, 400px, 300px; 
+      background-size: auto, 600px, 300px; 
     }
   }
  
-
   .input-box {
     @apply bg-neutral-500/20 border text-neutral border-neutral-500 rounded-xl h-12 placeholder-neutral-300 px-2 focus:outline  focus:outline-neutral-500 focus:outline-offset-2 
     hover:cursor-pointer hover:bg-neutral-300/30;
